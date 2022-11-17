@@ -40,4 +40,8 @@ public class UserService {
     public Optional<User> find(long id) {
         return userRepository.findById(id);
     }
+    
+    public Iterable<User> findAll(){
+    	return userRepository.findAll();
+    }
 }
