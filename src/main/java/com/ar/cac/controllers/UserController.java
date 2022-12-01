@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -25,7 +26,7 @@ public class UserController {
 	public UserController(UserService userService) {
 	    this.userService = userService;
 	}
-	
+
 	@GetMapping("/api/user/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public Optional<User> byId(@PathVariable("id") int id) {
@@ -61,4 +62,36 @@ public class UserController {
 	public Boolean delete(@PathVariable("id") int id) {
 	    return userService.remove(id);
 	}
+	// Con Swagger
+	
+	/*
+	@GetMapping("/api/user")
+	public ResponseEntity<List<User>> findAll(){
+		return ResponseEntity.ok((List<User>) userService.findAll()); 
+	}
+	
+	@GetMapping("/api/user/{id}")
+	public ResponseEntity<Optional<User>> findById(@PathVariable("id") int id){
+		return ResponseEntity.ok(userService.find(id)); 
+	}
+	
+	
+	@PutMapping("/api/user/")
+	public ResponseEntity<User> update(User user){
+		userService.update(user);
+		return ResponseEntity.ok(user);
+	}
+	
+	@PostMapping("/api/user")
+	public ResponseEntity<User> create(User user){
+		userService.create(user);
+		return ResponseEntity.ok(user);
+	}
+	
+	@DeleteMapping("/api/user/{id}")
+	public ResponseEntity<?> delete( @PathVariable("id") int id ) {
+		userService.remove(id);
+		return ResponseEntity.ok().build();
+		
+	}*/
 }
